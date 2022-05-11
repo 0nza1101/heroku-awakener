@@ -5,16 +5,17 @@ export function mode() {
   return 0;
 }
 
+interface StopTimes {
+  start: string;
+  end: string;
+}
 export interface Options {
-  interval: number;
-  logging: boolean;
-  stopTimes: {
-    start: number;
-    end: number;
-  }
+  interval?: number;
+  logging?: boolean;
+  stopTimes?: StopTimes;
 }
 
-function isStopTime(stopTimes: Options["stopTimes"]): boolean {
+function isStopTime(stopTimes: StopTimes): boolean {
   const { start, end } = stopTimes;
   const format = 'HH:mm';
 
@@ -31,12 +32,12 @@ function isStopTime(stopTimes: Options["stopTimes"]): boolean {
   return current.isBetween(startTime, endTime);
 };
 
-export function wakeDyno(url: string, options: Options) {
+export function wakeDyno(url: string, options: Options = {}) {
   const { interval = 29, logging = true, stopTimes } = options;
   const milliseconds = interval * 60000;
 
   setTimeout(() => {
-    if (isStopTime(stopTimes)) {
+    if (stopTimes && isStopTime(stopTimes)) {
       wakeDyno(url, options);
     } else {
       fetch(url)
@@ -52,7 +53,7 @@ export function wakeDynos(urls: string[], options: Options) {
   const milliseconds = interval * 60000;
 
   setTimeout(() => {
-    if (isStopTime(stopTimes)) {
+    if (stopTimes && isStopTime(stopTimes)) {
       wakeDynos(urls, options); // Recursively call function until not a stop time.
     } else {
       const promises = urls.map((url) => fetch(url));

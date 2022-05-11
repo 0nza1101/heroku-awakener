@@ -1,13 +1,25 @@
-# 🏁 Heroku awakener
+# 💤☁️ Heroku awakener
 
 ## ⭐ Getting started
 
 Import the `mode` function and use it:
 
 ```ts
-import { mode } from "https://raw.githubusercontent.com/denorg/starter/master/mod.ts";
+import { wakeDyno, wakeDynos } from "https://raw.githubusercontent.com/0nza1101/heroku-awakener/main/mod.ts";
 
-const result = mode();
+const url = 'https://seoul-tracker.herokuapp.com/'
+wakeDyno(url, {
+  interval: 10
+});
+
+const urls = ['https://kaffeine.herokuapp.com/', 'https://swapi-trybe.herokuapp.com/'] 
+wakeDynos(urls, {
+  interval: 29,
+  stopTimes: {
+    start: '6:00', // 6AM
+    end: '13:00' // 13PM
+  }
+});
 ```
 
 ### CLI with [DPX](https://github.com/denorg/dpx)
@@ -15,7 +27,7 @@ const result = mode();
 After [installing DPX](https://github.com/denorg/dpx), you can directly use the CLI using the `dpx` command:
 
 ```bash
-dpx --allow-read starter <arguments>
+dpx --allow-net heroku-awakener --url <url> --interval <interval>
 ```
 
 ### CLI
@@ -23,31 +35,31 @@ dpx --allow-read starter <arguments>
 Alternatively, you can use it directly from the CLI by using `deno run`:
 
 ```bash
-deno run --allow-read https://raw.githubusercontent.com/denorg/starter/master/cli.ts <arguments>
+deno run --allow-net https://raw.githubusercontent.com/0nza1101/heroku-awakener/main/cli.ts --url <url> --interval <interval>
 ```
 
 You can also install it globally using the following:
 
 ```bash
-deno install --allow-read -n heroku-awakener https://raw.githubusercontent.com/denorg/starter/master/cli.ts
+deno install --allow-net -n heroku-awakener https://raw.githubusercontent.com/0nza1101/heroku-awakener/main/cli.ts
 ```
 
 Then, the package is available to run:
 
 ```bash
-starter <arguments>
+heroku-awakener <arguments>
 ```
 
 ### Configuration
 
 Required permissions:
 
-1. `--allow-read`
+1. `--allow-net`
 
 ## 👩‍💻 Development
 
 Run tests:
 
 ```bash
-deno test --allow-read
+deno test --allow-net
 ```
