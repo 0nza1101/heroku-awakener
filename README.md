@@ -1,9 +1,6 @@
-# 💤☁️ Heroku awakener
+# ☁️💤 Heroku awakener
 
 ## ⭐ Getting started
-
-Import the `mode` function and use it:
-
 ```ts
 import { wakeDyno, wakeDynos } from "https://raw.githubusercontent.com/0nza1101/heroku-awakener/main/mod.ts";
 
