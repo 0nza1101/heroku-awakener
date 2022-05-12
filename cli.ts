@@ -6,9 +6,15 @@ if (import.meta.main) {
   console.log('Args', parse(Deno.args));
   const args = parse(Deno.args);
   const url = args.url;
-  if(url) {
+  if (url) {
     wakeDyno(url, {
       interval: args.interval ?? 1,
+      ...(args.start && args.end) && {
+        stopTimes: {
+          start: args.start,
+          end: args.end
+        }
+      }
     });
   }
 }

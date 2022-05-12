@@ -9,7 +9,7 @@ import { wakeDyno, wakeDynos } from "https://raw.githubusercontent.com/0nza1101/
 
 const url = 'https://seoul-tracker.herokuapp.com/'
 wakeDyno(url, {
-  interval: 10
+  interval: 10 // 10 minutes
 });
 
 const urls = ['https://kaffeine.herokuapp.com/', 'https://swapi-trybe.herokuapp.com/'] 

@@ -1,4 +1,9 @@
 import dayjs from "https://cdn.skypack.dev/dayjs@1.11.2";
+import isBetween from "https://cdn.skypack.dev/dayjs@1.11.2/plugin/isBetween.js";
+import customParseFormat from "https://cdn.skypack.dev/dayjs@1.11.2/plugin/customParseFormat.js";
+
+dayjs.extend(customParseFormat);
+dayjs.extend(isBetween);
 
 /** JSDoc for this line */
 export function mode() {
@@ -26,8 +31,8 @@ function isStopTime(stopTimes: StopTimes): boolean {
   }
 
   const current = dayjs();
-  const startTime = dayjs(start).format(format);
-  const endTime = dayjs(end).format(format);
+  const startTime = dayjs(start, format);
+  const endTime = dayjs(end, format);
 
   return current.isBetween(startTime, endTime);
 };
