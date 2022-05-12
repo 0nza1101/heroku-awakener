@@ -2,10 +2,10 @@ name: Test CI
 on:
   push:
     branches-ignore:
-      - "master"
+      - "main"
   pull_request:
     branches-ignore:
-      - "master"
+      - "main"
 jobs:
   build:
     name: ${{ matrix.kind }} ${{ matrix.os }}
@@ -19,10 +19,10 @@ jobs:
       DENO_BUILD_MODE: release
       V8_BINARY: true
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Setup Deno
-        uses: denolib/setup-deno@master
+        uses: denoland/setup-deno@v1
         with:
-          deno-version: 1.x
+          deno-version: vx.x.x
       - name: Run tests
-        run: deno test --allow-read
+        run: deno test --allow-net

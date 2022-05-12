@@ -1,6 +1,7 @@
 # ☁️💤 Heroku awakener
 
-## ⭐ Getting started
+Deno port of [heroku-keep-awake](https://github.com/colbymillerdev/heroku-keep-awake)
+## Getting started
 ```ts
 import { wakeDyno, wakeDynos } from "https://raw.githubusercontent.com/0nza1101/heroku-awakener/main/mod.ts";
 
