@@ -19,20 +19,14 @@ wakeDynos(urls, {
 });
 ```
 
-### CLI with [DPX](https://github.com/denorg/dpx)
-
-After [installing DPX](https://github.com/denorg/dpx), you can directly use the CLI using the `dpx` command:
-
-```bash
-dpx --allow-net heroku-awakener --url <url> --interval <interval>
-```
-
 ### CLI
 
 Alternatively, you can use it directly from the CLI by using `deno run`:
 
 ```bash
-deno run --allow-net https://raw.githubusercontent.com/0nza1101/heroku-awakener/main/cli.ts --url <url> --interval <interval>
+deno run --allow-net https://raw.githubusercontent.com/0nza1101/heroku-awakener/main/cli.ts --url <url> --interval <interval> --stopStart <start> --stopEnd <end>
+
+deno run --allow-net https://raw.githubusercontent.com/0nza1101/heroku-awakener/main/cli.ts --urls <urls> --interval <interval> --stopStart <start> --stopEnd <end>
 ```
 
 You can also install it globally using the following:
@@ -44,7 +38,7 @@ deno install --allow-net -n heroku-awakener https://raw.githubusercontent.com/0n
 Then, the package is available to run:
 
 ```bash
-heroku-awakener <arguments>
+heroku-awakener --url <url> --interval <interval> --stopStart <start> --stopEnd <end>
 ```
 
 ### Configuration

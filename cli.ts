@@ -1,20 +1,38 @@
 import { parse } from "https://deno.land/std@0.138.0/flags/mod.ts";
 import { wakeDyno } from "./mod.ts";
 
-// https://deno.land/manual/tools/script_installer
 if (import.meta.main) {
   console.log('Args', parse(Deno.args));
   const args = parse(Deno.args);
-  const url = args.url;
-  if (url) {
-    wakeDyno(url, {
-      interval: args.interval ?? 1,
-      ...(args.start && args.end) && {
-        stopTimes: {
-          start: args.start,
-          end: args.end
+
+  if (args._.length > 0) {
+    const url = args.url;
+    if (url) {
+      wakeDyno(url, {
+        interval: args.interval ?? 29,
+        ...(args.stopStart && args.stopEnd) && {
+          stopTimes: {
+            start: args.start,
+            end: args.end
+          }
         }
-      }
-    });
+      });
+    }
+
+    let urls = args.urls;
+    if (urls) {
+      urls = args.urls.split(',');
+      wakeDyno(urls, {
+        interval: args.interval ?? 29,
+        ...(args.stopStart && args.stopEnd) && {
+          stopTimes: {
+            start: args.start,
+            end: args.end
+          }
+        }
+      });
+    }
+  } else {
+    console.log('Usage:\n$ heroku-awakener --url <url> --interval <interval> --stopStart <start> --stopEnd <end>')
   }
 }
