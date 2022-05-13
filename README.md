@@ -25,8 +25,10 @@ wakeDynos(urls, {
 Alternatively, you can use it directly from the CLI by using `deno run`:
 
 ```bash
+# Single heroku app
 deno run --allow-net https://raw.githubusercontent.com/0nza1101/heroku-awakener/main/cli.ts --url <url> --interval <interval> --stopStart <start> --stopEnd <end>
 
+# Multiple heroku apps (separate urls with comma eg. https://swapi-trybe.herokuapp.com/,https://kaffeine.herokuapp.com/)
 deno run --allow-net https://raw.githubusercontent.com/0nza1101/heroku-awakener/main/cli.ts --urls <urls> --interval <interval> --stopStart <start> --stopEnd <end>
 ```
 
@@ -39,7 +41,7 @@ deno install --allow-net -n heroku-awakener https://raw.githubusercontent.com/0n
 Then, the package is available to run:
 
 ```bash
-heroku-awakener --url <url> --interval <interval> --stopStart <start> --stopEnd <end>
+heroku-awakener --url|--urls <urls|urls> --interval <interval> --stopStart <start> --stopEnd <end>
 ```
 
 ### Configuration
@@ -48,7 +50,7 @@ Required permissions:
 
 1. `--allow-net`
 
-## 👩‍💻 Development
+## Development
 
 Run tests:
 
