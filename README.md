@@ -1,4 +1,5 @@
 # ☁️💤 Heroku awakener
+[![deno land](http://img.shields.io/badge/available%20on-deno.land/x-lightgrey.svg?logo=deno&labelColor=black)](https://deno.land/x/heroku_awakener) [![GitHub release](https://img.shields.io/github/release/0nza1101/heroku-awakener.svg)](https://github.com/0nza1101/heroku-awakener/releases) [![CI](https://github.com/0nza1101/heroku-awakener/workflows/Deno%20CI/badge.svg)](https://github.com/0nza1101/heroku-awakener/actions?query=workflow%3A"Deno+CI"++)
 
 Deno port of [heroku-keep-awake](https://github.com/colbymillerdev/heroku-keep-awake)
 ## Getting started
