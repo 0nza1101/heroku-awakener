@@ -4,7 +4,7 @@
 Deno port of [heroku-keep-awake](https://github.com/colbymillerdev/heroku-keep-awake)
 ## Getting started
 ```ts
-import { wakeDyno, wakeDynos } from "https://raw.githubusercontent.com/0nza1101/heroku-awakener/main/mod.ts";
+import { wakeDyno, wakeDynos } from "https://deno.land/x/heroku_awakener/mod.ts";
 
 const url = 'https://seoul-tracker.herokuapp.com/'
 wakeDyno(url, {
