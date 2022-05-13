@@ -5,7 +5,6 @@ import customParseFormat from "https://cdn.skypack.dev/dayjs@1.11.2/plugin/custo
 dayjs.extend(customParseFormat);
 dayjs.extend(isBetween);
 
-/** JSDoc for this line */
 export function mode() {
   return 0;
 }
@@ -37,6 +36,11 @@ function isStopTime(stopTimes: StopTimes): boolean {
   return current.isBetween(startTime, endTime);
 };
 
+/**
+ * Ping the URL of an Heroku application periodically
+ * @param {string} url - Heroku application url
+ * @param {Options} options - options object.
+ */
 export function wakeDyno(url: string, options: Options = {}) {
   const { interval = 29, logging = true, stopTimes } = options;
   const milliseconds = interval * 60000;
@@ -53,6 +57,11 @@ export function wakeDyno(url: string, options: Options = {}) {
   }, milliseconds);
 }
 
+/**
+ * Ping multiple Heroku application URLs periodically
+ * @param {string[]} urls - Heroku application urls
+ * @param {Options} options - options object.
+ */
 export function wakeDynos(urls: string[], options: Options) {
   const { interval = 29, logging = true, stopTimes } = options;
   const milliseconds = interval * 60000;
