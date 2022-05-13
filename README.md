@@ -27,16 +27,16 @@ Alternatively, you can use it directly from the CLI by using `deno run`:
 
 ```bash
 # Single heroku app
-deno run --allow-net https://raw.githubusercontent.com/0nza1101/heroku-awakener/main/cli.ts --url <url> --interval <interval> --stopStart <start> --stopEnd <end>
+deno run --allow-net https://deno.land/x/heroku_awakener/cli.ts --url <url> --interval <interval> --stopStart <start> --stopEnd <end>
 
 # Multiple heroku apps (separate urls with comma eg. https://swapi-trybe.herokuapp.com/,https://kaffeine.herokuapp.com/)
-deno run --allow-net https://raw.githubusercontent.com/0nza1101/heroku-awakener/main/cli.ts --urls <urls> --interval <interval> --stopStart <start> --stopEnd <end>
+deno run --allow-net https://deno.land/x/heroku_awakener/cli.ts --urls <urls> --interval <interval> --stopStart <start> --stopEnd <end>
 ```
 
 You can also install it globally using the following:
 
 ```bash
-deno install --allow-net -n heroku-awakener https://raw.githubusercontent.com/0nza1101/heroku-awakener/main/cli.ts
+deno install --allow-net -n heroku-awakener https://deno.land/x/heroku_awakener/cli.ts
 ```
 
 Then, the package is available to run:
