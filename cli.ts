@@ -2,16 +2,14 @@ import { parse } from "https://deno.land/std@0.138.0/flags/mod.ts";
 import { Options, wakeDyno } from "./mod.ts";
 
 if (import.meta.main) {
-  console.log('Args', parse(Deno.args));
-  const args = parse(Deno.args);
-
-  if (args._.length > 0) {
+  if (Deno.args.length > 0) {
+    const args = parse(Deno.args);
     const options: Options = {
       interval: args.interval ?? 29,
-      ...(args.stopStart && args.stopEnd) && {
+      ...(args.stopStart || args.stopEnd) && {
         stopTimes: {
-          start: args.start,
-          end: args.end
+          start: args.stopStart,
+          end: args.stopEnd
         }
       }
     }
@@ -26,6 +24,6 @@ if (import.meta.main) {
       wakeDyno(urls, options);
     }
   } else {
-    console.log('Usage:\n$ heroku-awakener --url <url> --interval <interval> --stopStart <start> --stopEnd <end>')
+    console.log('Usage:\n$ heroku-awakener --url <url> --interval <interval> --stopStart <start> --stopEnd <end>\n$ heroku-awakener --urls <urls> --interval <interval> --stopStart <start> --stopEnd <end>')
   }
 }

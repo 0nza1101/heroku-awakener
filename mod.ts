@@ -1,13 +1,10 @@
+import * as logger from "https://deno.land/std@0.139.0/log/mod.ts";
 import dayjs from "https://cdn.skypack.dev/dayjs@1.11.2";
 import isBetween from "https://cdn.skypack.dev/dayjs@1.11.2/plugin/isBetween.js";
 import customParseFormat from "https://cdn.skypack.dev/dayjs@1.11.2/plugin/customParseFormat.js";
 
 dayjs.extend(customParseFormat);
 dayjs.extend(isBetween);
-
-export function mode() {
-  return 0;
-}
 
 interface StopTimes {
   start: string;
@@ -23,9 +20,8 @@ function isStopTime(stopTimes: StopTimes): boolean {
   const { start, end } = stopTimes;
   const format = 'HH:mm';
 
-  // Check if a start and end time are supplied.
   if (!start || !end) {
-    console.log('WARNING: Both a start/end stop time must be defined.');
+    logger.warning('Both a start/end stop time must be defined.');
     return true;
   }
 
@@ -50,8 +46,8 @@ export function wakeDyno(url: string, options: Options = {}) {
       wakeDyno(url, options);
     } else {
       fetch(url)
-        .then(() => logging && console.log('Successfully woke the dyno'))
-        .catch(() => logging && console.log('Error attempting to wake the dyno'))
+        .then(() => logging && logger.info('Successfully woke the dyno'))
+        .catch((error: Error) => logging && logger.error(`Attempting to wake the dyno : ${error.message}`))
         .finally(() => wakeDyno(url, options));
     }
   }, milliseconds);
@@ -68,12 +64,12 @@ export function wakeDynos(urls: string[], options: Options) {
 
   setTimeout(() => {
     if (stopTimes && isStopTime(stopTimes)) {
-      wakeDynos(urls, options); // Recursively call function until not a stop time.
+      wakeDynos(urls, options);
     } else {
       const promises = urls.map((url) => fetch(url));
       Promise.all(promises)
-        .then(() => logging && console.log('Successfully woke all dynos'))
-        .catch(() => logging && console.log('Error attempting to wake the dynos'))
+        .then(() => logging && logger.info('Successfully woke all dynos'))
+        .catch((error: Error) => logging && logger.error(`Attempting to wake the dyno : ${error.message}`))
         .finally(() => wakeDynos(urls, options));
     }
   }, milliseconds);
